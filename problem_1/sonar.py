@@ -1,3 +1,4 @@
+import argparse
 
 def read_measurments(filename: str) -> list[int]:
     with open(filename) as input_file:
@@ -12,6 +13,16 @@ def count_increases(measurements: list[int], verbose: bool = False) -> int:
             num_increases += 1
     return num_increases
 
+def get_input_filename() -> str:
+    # NOTE: Argparse is probably overkill for one positional argument but oh well
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input_file', nargs='?', default='./input.txt')
+
+    args = parser.parse_args()
+    filename = args.input_file
+    return filename
+
 if __name__ == "__main__":
-    measurments = read_measurments("test_input.txt")
+    filename = get_input_filename()
+    measurments = read_measurments(filename)
     print(count_increases(measurments))
