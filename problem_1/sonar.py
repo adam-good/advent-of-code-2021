@@ -6,6 +6,9 @@ def read_measurments(filename: str) -> list[int]:
     return measurementes
 
 def count_increases(measurements: list[int], verbose: bool = False) -> int:
+    if verbose:
+        print("Haha, Adam was lazy and didn't impliment this. Sorry!")
+
     # NOTE: There has to be a more clever way to do this but oh well for now
     num_increases = 0
     for i in range(1,len(measurements)):
