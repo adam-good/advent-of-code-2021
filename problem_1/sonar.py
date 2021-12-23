@@ -12,7 +12,7 @@ def count_increases(measurements: list[int], verbose: bool = False) -> int:
     # NOTE: There has to be a more clever way to do this but oh well for now
     num_increases = 0
     for i in range(1,len(measurements)):
-        if measurments[i] > measurments[i-1]:
+        if measurements[i] > measurements[i-1]:
             num_increases += 1
     return num_increases
 
