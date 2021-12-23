@@ -5,16 +5,15 @@ def read_measurments(filename: str) -> list[int]:
         measurementes = [int(line) for line in input_file]
     return measurementes
 
-def count_increases(measurements: list[int], verbose: bool = False) -> int:
-    if verbose:
-        print("Haha, Adam was lazy and didn't impliment this. Sorry!")
-
-    # NOTE: There has to be a more clever way to do this but oh well for now
+def count_increases_imparative(measurements: list[int]) -> int:
     num_increases = 0
     for i in range(1,len(measurements)):
         if measurements[i] > measurements[i-1]:
             num_increases += 1
     return num_increases
+
+def count_increases_functional(measurements: list[int]) -> int:
+    return sum([1 for a,b in zip(measurements[:-1], measurements[1:]) if (b-a) > 0])
 
 def get_input_filename() -> str:
     # NOTE: Argparse is probably overkill for one positional argument but oh well
@@ -27,5 +26,6 @@ def get_input_filename() -> str:
 
 if __name__ == "__main__":
     filename = get_input_filename()
-    measurments = read_measurments(filename)
-    print(count_increases(measurments))
+    measurements = read_measurments(filename)
+    print(count_increases_imparative(measurements))
+    print(count_increases_functional(measurements))
